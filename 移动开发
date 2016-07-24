@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>响应式</title>
+	<meta charset="utf-8">
+	<style>
+		h3{
+			width: 960px;
+			height: 100px;
+			background: gray;
+			line-height: 100px;
+			text-align: center;
+			margin: 100px auto;
+		}
+		#article{
+			width: 960px;
+			height: 200px;
+			margin: 100px auto;
+				}
+		#left,#right{
+			display: table;
+			height: 200px;
+			vertical-align: middle;
+		}
+		#left {
+			width: 70%;
+			background: yellow;
+			float: left;
+		}
+		#right{
+			width: 29%;
+			background: green;
+			float: right;
+		}
+		#left p,#right p{
+			display: table-cell;
+			vertical-align: middle;
+		}
+		#banner{
+			background: url(1.jpg) no-repeat center;
+			-webkit-background-size:cover;
+			
+			height: 480px;
+			width: 960px;
+			margin: 0 auto;
+		}
+		@media screen and (max-width:859px ){
+			h3{
+				width: 100%;
+			}
+			#article{
+				width: 100%;
+			}
+			#left{
+				width: 70%;
+			}
+			#right{
+				width: 29%
+			}
+			#banner{
+				width: 100%;
+				padding-top: 75%;
+				height: 0;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h3>页头</h3>
+	</header>
+	<nav>
+		<h3>
+			导航
+		</h3>
+	</nav>
+	<div id="banner"></div>
+	<div id="article">
+	<div id="left"><p>大熊猫体型肥硕似熊，憨态可掬，但头圆尾短，头部和身体毛色黑白相间分明。其体长120~180厘米，尾长10~20厘米，白色，体重60~110千克。头圆而大，前掌除了5个带爪的趾外，还有一个第六趾。躯干是尾白色，两耳、眼周、四肢和肩胛部全是黑色，腹部淡棕色或灰黑色。</p></div>
+	<div id="right"><p>大熊猫栖息于长江上游各山系的高山深谷，为东南季风的迎风面，气候温凉潮湿，其湿度常在80%以上，故它们是一种喜湿性动物。它们活动的区域多在坳沟、山腹洼地、河谷阶地等，一般在20°以下的缓坡地形</p></div>
+	</div>
+	<footer>
+		<h3>页脚</h3>
+	</footer>
+</body>
+</html>
