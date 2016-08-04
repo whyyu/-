@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+	<title>滑动图片</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		img{
+			border: 0
+		}
+		ul{
+			list-style: none;
+		}
+		body{
+			background: black;
+		}
+		#container img{
+			margin-right: 2px;
+		}
+		#container img:nth-child(4n){
+			margin-right: 0;
+		}
+		#big-img{
+			background: yellow;
+		}
+		#big-img{
+			width: 100%;
+			height: 100%;
+			background: #000;
+			position: absolute;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id="big-img"></div>
+	<script src="zepto.min.js"></script>
+	<script>
+		$(function(){
+			var $oContainer=$('#container');
+			var $bMg=$('#big-img');
+			var count=0;
+			var iPadding=2;
+			var index=0;
+			for(i=0;i<16;i++){
+				var img=new Image();
+				img.onload=function(){
+					count++;
+					if(count==16){
+						succed();
+					}
+
+				};
+				img.src='img1/thumbs/'+(i+1)+'.jpg'
+				$oContainer.append(img);
+			}
+			function succed(){
+				var $img=$('img',$oContainer);
+				var iWidth=$(document.body).width();
+				$('img',$oContainer).css({
+					width:(iWidth-3*iPadding)/4,
+				});
+				$('img',$oContainer).on('tap',function(){
+					$oContainer.hide();
+					$bMg.show();
+					$bMg.css({
+						background:'url(img1/'+($(this).index()+1)+'.jpg) no-repeat center',
+						backgroundSize:'contain'
+
+					});
+					$bMg.on('swipeLeft',function(){
+						index++;
+						if (index>16) {
+							index=1;
+						}
+					$bMg.css({
+						background:'url(img1/'+index+'.jpg) no-repeat center',
+						backgroundSize:'contain'
+
+					});
+					});
+					$bMg.on('swipeRight',function(){
+						index--;
+						if(index<=0){
+							index=16;
+						}
+					$bMg.css({
+						background:'url(img1/'+index+'.jpg) no-repeat center',
+						backgroundSize:'contain'
+					});
+					});
+				});
+				$bMg.on('tap',function(){
+					$oContainer.show();
+					$bMg.hide();
+				});
+
+			}
+
+		});
+
+	</script>
+</body>
+</html>
